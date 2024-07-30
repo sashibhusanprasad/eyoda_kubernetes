@@ -10,12 +10,22 @@ Instructions
 7. try voting and see the results paralelly in results page.
 
 
+upload the TEXT file , containing ALL your observations in the gitHub. Share the gitHub link in the Assignment page in edYoda.
+
+In summary, your text file should contain:
+1. Commands that you used during the assignment.
+2. snapshot of logs (wherever possible)
+3. your comment on WHY result app STOPPED working after db pod stop
+4. your answer to HOW YOU MADE THE RESULT POD work. 
+5. Some jargons (just names are enough- dont need sentences) that you learnt from the 40-hour Training session
+
+
 
 Question 1: Now try to delete the Pods one by one (first voting Pod, then worker pod, then db pod) and see what happens to the voting and result app after deleting.
 
 Answer:- 
 WHEN VOTING POD IS DELETED.
-When you delete voting pod, the pod is created again automatically ensuring that the application remains functional and the desired state is maintained. A new vote pod with a different unique identifier indicating that Kubernetes has automatically created a new vote pod to replace the one that was deleted. I can access the voting application again using the same URL.
+When you delete voting pod, the pod is created again automatically ensuring that the application remains functional and the desired state is maintained. A new vote pod with a different unique identifier indicating that Kubernetes has automatically created a new vote pod to replace the one that was deleted. I can access the voting application again using the same URL. No disruptions in front end too.
 
 WHEN WORKER POD IS DELETED.
 When you delete worker pod, Kubernetes manages the termination and recreation of pods, ensuring that the application remains functional and the desired state is maintained. A new worker pod with a different unique identifier indicating that Kubernetes has automatically created a new vote pod to replace the one that was deleted. I can access the voting application again using the same URL.
@@ -25,20 +35,11 @@ When postgres pod is deleted, you can delete a PostgreSQL pod and observe how Ku
 
 Question 2: what happens after db pod deletion. 
 
+Answer: after deletion od DB, the data is deleted and result will have no result. As kubernetes is stateless application so deletion of pods will remove all the data in the pods.
+
 Question 3: complete the assignment by making the result pod work. (if you delete db pod, results would not be captured.So repeat what we did in the class in order to make the result pod work.). Write in the text file, what you did in order to make the result pod work.
 
-
-
-
-
-upload the TEXT file , containing ALL your observations in the gitHub. Share the gitHub link in the Assignment page in edYoda.
-
-In summary, your text file should contain:
-1. Commands that you used during the assignment.
-2. snapshot of logs (wherever possible)
-3. your comment on WHY result app STOPPED working after db pod stop
-4. your answer to HOW YOU MADE THE RESULT POD work. 
-5. Some jargons (just names are enough- dont need sentences) that you learnt from the 40-hour Training session
+Answer: To make the result pod work again, we have to again open voting front end and vote again which creates data in DB and result is shown once DB is having data. Result is unable to fetch data from the DB after reswapning of DB and thats why it has stopped working.
 
 
 
