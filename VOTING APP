@@ -21,17 +21,11 @@ WHEN WORKER POD IS DELETED.
 When you delete worker pod, Kubernetes manages the termination and recreation of pods, ensuring that the application remains functional and the desired state is maintained. A new worker pod with a different unique identifier indicating that Kubernetes has automatically created a new vote pod to replace the one that was deleted. I can access the voting application again using the same URL.
 
 WHEN DB POD IS DELETED.
-When postgres pod is deleted, you can delete a PostgreSQL pod and observe how Kubernetes manages the termination and recreation of pods, ensuring that the application's database backend remains functional and the desired state is maintained.
+When postgres pod is deleted, you can delete a PostgreSQL pod and observe how Kubernetes manages the termination and recreation of pods, ensuring that the application's database backend remains functional and the desired state is maintained. When DB is deleted, the pod get reinitialiazed again and the data in the pod is deleted. After deletion again we have to vote to see the result.
 
+Question 2: what happens after db pod deletion. 
 
-
-9 Write your observations in a text file.
-
-10. what happens after db pod deletion. 
-
-11. complete the assignment by making the result pod work. (if you delete db pod, results would not be captured.So repeat what we did in the class in order to make the result pod work.).
-
-12. Write in the text file, what you did in order to make the result pod work.
+Question 3: complete the assignment by making the result pod work. (if you delete db pod, results would not be captured.So repeat what we did in the class in order to make the result pod work.). Write in the text file, what you did in order to make the result pod work.
 
 
 
