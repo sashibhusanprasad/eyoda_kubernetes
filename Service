@@ -1,0 +1,30 @@
+You have deployed an application, that is listening at port 8000. You used a replica-set to deploy it and created a NodePort service to make it accessible. But when you test it, somehow the application is not reachable at the port. Write down your approach and sequentially all the steps that you will take to find out the issue.
+
+
+Answers:
+
+Troubleshooting Steps:
+
+1. Check Pod Status:
+  a. Verify Pods are Running: kubectl get pods
+  b. Check Pod Logs: kubectl logs <pod-name>
+  c. Inspect Pod Details: kubectl describe pod <pod-name>
+
+2. Verify Service Configuration
+  a.Check Service Details: kubectl get svc
+  b.Inspect Service Configuration: kubectl describe svc <service-name>
+
+3. Check Service Connectivity
+	a. Test Service Endpoints: kubectl get endpoints <service-name>
+	b. Port Forward to a Pod: kubectl port-forward <pod-name> 8000:8000
+
+4. Inspect NodePort Configuration
+	a. Get Service NodePort: kubectl get svc <service-name>
+	b. Check NodePort Accessibility
+	
+5. Check Network Policies
+6. Inspect Kubernetes Events
+	a. View Events: kubectl get events
+
+7. Verify Application Binding
+8. Check Node Health: kubectl get nodes
