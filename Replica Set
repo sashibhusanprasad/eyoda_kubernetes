@@ -1,0 +1,46 @@
+Write a common use-case, where you will use a daemon set instead of replica set.
+
+Answer.
+A common use-case for using a DaemonSet instead of a ReplicaSet in Kubernetes is when you need to ensure that a particular type of pod runs on every node in a cluster. DaemonSets are typically used for deploying system-level applications that require a pod on each node for functionality such as monitoring, logging, or networking.
+
+USE CASE SCENARIO
+I want to monitor the resource usage and performance metrics of each node in your Kubernetes cluster using Prometheus Node Exporter.
+
+Solution:
+Deploy the Prometheus Node Exporter as a DaemonSet.
+
+YAML CODE:
+
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: node-exporter
+  labels:
+    app: prometheus
+spec:
+  selector:
+    matchLabels:
+      app: node-exporter
+  template:
+    metadata:
+      labels:
+        app: node-exporter
+    spec:
+      containers:
+      - name: node-exporter
+        image: prom/node-exporter:latest
+        ports:
+        - containerPort: 9100
+          name: metrics
+        resources:
+          limits:
+            memory: "200Mi"
+            cpu: "100m"
+          requests:
+            memory: "100Mi"
+            cpu: "50m"
+
+SUMMARY
+
+In this use-case, the DaemonSet ensures that every node is monitored by deploying the Prometheus Node Exporter on each node. This is preferable to using a ReplicaSet, which is typically used for deploying stateless applications where you need a specified number of identical pods running across the cluster but not necessarily one per node.
+
